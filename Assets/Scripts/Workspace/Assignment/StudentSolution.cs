@@ -55,17 +55,62 @@ namespace Assignment
 
         public int[] AS01_FindFirstAndLastElementOfArray(int[] array, int target)
         {
-            throw new NotImplementedException();
+            int first = -1;
+            int last = -1;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == target)
+                {
+                    if (first == -1)
+                    {
+                        first = i;
+                    }
+                    last = i;
+                }
+            }
+
+            if (first == -1)
+            {
+                return new int[] { -1 };
+            }
+
+            return new int[] { first, last };
         }
 
         public int AS02_FindMaxLessThan(int[] array, int target)
         {
-            throw new NotImplementedException();
+            int maxLessThanTarget = -1;
+            bool found = false;
+
+            foreach (int num in array)
+            {
+                if (num < target)
+                {
+                    if (!found || num > maxLessThanTarget)
+                    {
+                        maxLessThanTarget = num;
+                        found = true;
+                    }
+                }
+            }
+
+            return found ? maxLessThanTarget : -1;
         }
 
         public int[] AS03_FindRange(int[] array, int min, int max)
         {
-            throw new NotImplementedException();
+            System.Collections.Generic.List<int> result = new System.Collections.Generic.List<int>();
+
+            foreach (int num in array)
+            {
+                if (num >= min && num <= max)
+                {
+                    result.Add(num);
+                }
+            }
+
+            return result.ToArray();
         }
 
         #endregion
